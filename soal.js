@@ -5,19 +5,25 @@ let h = {
 }
 
 
+//Function to add the employee as an object in the array
 
 let addUser = (name, family, hoursPerMonth, salaryPerMonth) => {
-	let idx = listOfEmployees.findIndex(user => user.name === name && user.family === family)
+	let idx = listOfEmployees.findIndex(user => user.name === name && user.family === family) 
+	let user = {};
 	if (hoursPerMonth >= 160 && idx === -1) {
-		listOfEmployees.push({
+			user = 	{
 			name,
 			family,
 			hoursPerMonth,
 			salaryPerMonth
-		})
+		}
+		listOfEmployees.push(user)
 		h.add++;
 	}
+	return user;
 }
+
+// Function to delete employee by first and last name
 
 let removeUser = (name, family) => {
 	let foundUser = {}
@@ -30,6 +36,9 @@ let removeUser = (name, family) => {
 	}
 	return foundUser
 }
+
+
+// Function to remove employee based on income to range ratio
 
 let removeWithRange = (min, max) => {
 	let count = 0;
@@ -51,6 +60,8 @@ let removeWithRange = (min, max) => {
 	return removeList
 }
 
+// Function to find the highest income among employees
+
 let findMaxSalary = () => {
 	let maxSalary = 0;
 
@@ -62,6 +73,8 @@ let findMaxSalary = () => {
 
 	return maxSalary
 }
+
+// Function to find the lowest income among employees
 
 let findMinSalary = () => {
 	let minSalary = Infinity;
@@ -76,6 +89,8 @@ let findMinSalary = () => {
 
 }
 
+// Function to calculate the average income of employees
+
 let calculateAvg = () => {
 	let sum = 0;
 	listOfEmployees.forEach((x) => {
@@ -85,6 +100,8 @@ let calculateAvg = () => {
 
 	return avg
 }
+
+//Function to show employees whose income is below and above average
 
 let salaryInfo = () => {
 	let avg = calculateAvg();
@@ -107,6 +124,8 @@ let history = () => {
 	return h
 }
 
+// Display the desired employee information
+
 let showInfo = (name, family) => {
 	let user = {};
 	let idx = listOfEmployees.findIndex(user => user.name === name && user.family === family)
@@ -116,6 +135,8 @@ let showInfo = (name, family) => {
 	}
 	return user;
 }
+
+// Display information of all employees
 
 let showAllInfo = () => {
 	return listOfEmployees;
@@ -147,19 +168,19 @@ while (loop) {
 		case "removeWithRange":
 			let min = +prompt("Please Enter minimum of the range")
 			let max = +prompt("Please Enter maximum of the range");
-			console.log( removeWithRange(min, max));
+			console.log(removeWithRange(min, max));
 			break
 		case "findMaxSalary":
-			console.log( findMaxSalary());
+			console.log(findMaxSalary());
 			break
 		case "findMinSalary":
-			console.log( findMinSalary());
+			console.log(findMinSalary());
 			break
 		case "salaryInfo":
-			console.log( salaryInfo());
+			console.log(salaryInfo());
 			break
 		case "history":
-			console.log( history());
+			console.log(history());
 			break
 		case "showInfo":
 			name = prompt("Please Enter employee's name");
